@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Join Room - Bingo</title>
+    <link href="/style.css" rel="stylesheet">
+    <link href="/favicon.png" rel="icon">
+  </head>
+  <body>
+    <h1>Join Existing Room</h1>
+    <form action="" method="POST">
+      <input placeholder="Type room" name="room">
+      <button>Join</button>
+    </form>
+    {% if error %}
+    <p>That room doesn't exist.</p>
+    {% endif %}
+  </body>
+</html>

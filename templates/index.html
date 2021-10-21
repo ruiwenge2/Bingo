@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Home - Bingo</title>
+    <link href="/style.css" rel="stylesheet">
+    <link href="/favicon.png" rel="icon">
+  </head>
+  <body>
+    <h1>Bingo</h1>
+    {% if loggedin %}
+    <h2>Hi {{session["username"]}}</h2>
+    <button onclick="location.href='/join'">Join existing room</button><br><br>
+    <button onclick="location.href='/create'">Create room</button><br><br>
+    <button onclick="rename()">Rename</button>
+    <form action="/" method="POST" id="rename">
+      <h1>Rename</h1>
+      <input name="username" placeholder="Enter username" id="newname">
+      <button>Done</button>
+    </form>
+    {% else %}
+    <h3>Enter your name to play:</h3>
+    <form action="/" method="POST">
+      <input name="username" placeholder="Enter username">
+      <button>Done</button>
+    </form>
+    {% endif %}
+    {% if error %}
+    <p>Please enter a name.</p>
+    {% endif %}
+    <script src="/script.js"></script>
+  </body>
+</html>

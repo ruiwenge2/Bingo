@@ -1,0 +1,27 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
+
+body {
+  font-family:"Roboto";
+  text-align:center;
+}
+button {
+  background:white;
+  color:blue;
+  height:30px;
+  border:2px solid blue;
+  border-radius:7px;
+  cursor:pointer;
+  user-select:none;
+  transition:all 0.3s ease-in-out;
+}
+button:hover {
+  background:blue;
+  color:white;
+}
+input {
+  width:200px;
+  height:23px;
+}
+#rename {
+  display:none;
+}

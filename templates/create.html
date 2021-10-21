@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bingo - Create Room</title>
+    <link href="/style.css" rel="stylesheet">
+    <link href="/favicon.png" rel="icon">
+  </head>
+  <body>
+    <h1>Create Room</h1>
+    <form action="" method="POST">
+      <h3>Enter room name:</h3><input name="name" placeholder="Type room">
+      <h3>Public or Private (if room is public it will be shown on the website):</h3>
+      <select name="privacy">
+        <option value="public">Public</option>
+        <option value="private">Private</option>
+      </select>
+      <h3>Board size:</h3>
+      <select name="size">
+        <option value="3">3 by 3</option>
+        <option value="4">4 by 4</option>
+        <option value="5" selected>5 by 5</option>
+      </select>
+      <h3>Maximum number of players:</h3>
+      <input name="maxplayers" type="number" value="10" min="2" max="30">
+      <h3>Minimum Generated Number:</h3>
+      <input name="minnum" type="number" value="0" min="0" max="20">
+      <h3>Maximum Generated Number:</h3>
+      <input name="maxnum" type="number" value="25" min="25" max="100"><br><br>
+      <button>Create</button>
+      {% if error %}
+      <p>Please enter a room name.</p>
+      {% endif %}
+    </form>
+  </body>
+</html>
