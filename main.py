@@ -12,6 +12,9 @@ users = {}
 def check():
   return "username" in session
 
+def username():
+  return session["username"]
+
 class Room():
   def __init__(self, host, name, privacy, size, maxplayers, minnum, maxnum):
     self.host = host
@@ -84,6 +87,8 @@ def createroom():
     return render_template("create.html", error="Please enter a room name.")
   if name in rooms:
     return render_template("create.html", error="This room name is taken.")
+  rooms[name] = Room(host, name, privacy, size, maxplayers, minnum, maxnum)
+  print(rooms)
   session["hosted"].append(name)
   print(session)
   return redirect("/game/" + name)
@@ -91,8 +96,11 @@ def createroom():
 @app.route("/game/<room>")
 def game(room):
   if not check(): return redirect("/")
-  
-  return render_template("game.html", host=(room in session["hosts"]))
+  if room not in rooms:return "not a room"
+  host = (room in session["hosted"])
+  # if rooms[room].host == username():
+  #   host = False
+  return render_template("game.html", host=host)
 
 """
 @app.route(os.getenv("url"))
