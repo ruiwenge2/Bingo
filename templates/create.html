@@ -8,7 +8,7 @@
   <body>
     <h1>Create Room</h1>
     <form action="" method="POST">
-      <h3>Enter room name:</h3><input name="name" placeholder="Type room">
+      <h3>Enter room name:</h3><input name="name" placeholder="Type room" autofocus>
       <h3>Public or Private (if room is public it will be shown on the website):</h3>
       <select name="privacy">
         <option value="public">Public</option>
@@ -28,7 +28,7 @@
       <input name="maxnum" type="number" value="25" min="25" max="100"><br><br>
       <button>Create</button>
       {% if error %}
-      <p>Please enter a room name.</p>
+      <p>{{error}}</p>
       {% endif %}
     </form>
     <script src="/script.js"></script>
