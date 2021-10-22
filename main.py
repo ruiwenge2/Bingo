@@ -27,6 +27,11 @@ def setusername():
     print(session)
   return redirect("/")
 
+@app.route("/logout")
+def logout():
+  session.clear()
+  return redirect("/")
+
 @app.route("/join")
 def join():
   if not c(session): return redirect("/")
@@ -72,7 +77,10 @@ def createroom():
 def game(room):
   if not c(session): return redirect("/")
   if room not in rooms:return "not a room"
-  hosted = session["hosted"].split(" ")
+  hostedrooms = session["hosted"]
+  hosted = room
+  if hostedrooms != room:
+    hosted = hostedrooms.split(" ")
   host = (room in hosted)
   if rooms[room].host == u(session) and rooms[room].host_joined:
     host = False
@@ -87,15 +95,18 @@ def url():
 @socketio.on("joined")
 def joined(name, room):
   rooms[room].involved.append({request.sid:name})
+  host = True
   if name == rooms[room].host and not rooms[room].host_joined:
     rooms[room].host_joined = True
   else:
     player = Player(name, request.sid, room)
     player.generate_board(rooms)
     rooms[room].players.append(player)
+    host = False  
   print(rooms[room].__dict__)
   join_room(room)
-  emit("gameboard", player.board, room=request.sid)
+  if not host:
+    emit("gameboard", player.board, room=request.sid)
 
 @socketio.on("disconnect")
 def disconnect():
