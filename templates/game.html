@@ -7,11 +7,15 @@
     <link href="/favicon.png" rel="icon">
   </head>
   <body>
+    <h1>Bingo</h1>
     {% if host %}
-    You are a host.
+    <p>You are the host.</p>
     {% else %}
-    You are not a host.
-    <table id="gameboard"></table>
+    <p>Host: {{gamehost}}</p>
+    <div id="gameboard-wrapper">
+      <p id="gameboard-message"></p>
+      <table id="gameboard"></table>
+    </div>
     {% endif %}
     <script>
       const name = "{{name}}";

@@ -79,12 +79,15 @@ def game(room):
   if room not in rooms:return "not a room"
   hostedrooms = session["hosted"]
   hosted = room
+  gamehost = None
   if hostedrooms != room:
     hosted = hostedrooms.split(" ")
   host = (room in hosted)
   if rooms[room].host == u(session) and rooms[room].host_joined:
     host = False
-  return render_template("game.html", name=u(session), room=room, host=host)
+  if not host:
+    gamehost = rooms[room].host
+  return render_template("game.html", name=u(session), room=room, host=host, gamehost=gamehost)
 
 """
 @app.route(os.getenv("url"))

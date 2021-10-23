@@ -1,7 +1,20 @@
 table {
   border-collapse: collapse;
+  margin:0 auto;
+  height:400px;
+  width:400px;
+  font-size:25px;
 }
 table, th, td {
   border: 3px solid black;
   text-align:center;
+}
+#gameboard-wrapper {
+  float:left;
+  text-align:left;
+  margin-left:30px;
+}
+td:hover {
+  cursor:pointer;
+  color:dodgerblue;
 }
