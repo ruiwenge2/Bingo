@@ -11,10 +11,17 @@ table, th, td {
 }
 #gameboard-wrapper {
   float:left;
-  text-align:left;
-  margin-left:30px;
+  margin-left:100px;
 }
 td:hover {
   cursor:pointer;
   color:dodgerblue;
+}
+#other {
+  float:right;
+  margin-right:100px;
+}
+#players-wrapper, #chat-wrapper {
+  width:300px;
+  border:3px solid black;
 }

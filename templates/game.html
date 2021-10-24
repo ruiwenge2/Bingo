@@ -17,6 +17,18 @@
       <table id="gameboard"></table>
     </div>
     {% endif %}
+    <div id="other">
+      <div id="players-wrapper">
+        <h1>Players</h1>
+        <div id="players"></div>
+      </div><br><br>
+      <div id="chat-wrapper">
+        <h1>Chat</h1>
+        <div id="chat"></div>
+        <input id="input">
+        <button>Send</button>
+      </div>
+    </div>
     <script>
       const name = "{{name}}";
       const room = "{{room}}";

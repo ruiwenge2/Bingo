@@ -15,3 +15,6 @@ class Room():
     
   def generate_number(self):
     return random.randint(self.minnum, self.maxnum)
+
+  def check_for_bingo(self):
+    pass

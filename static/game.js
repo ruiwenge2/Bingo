@@ -17,7 +17,7 @@ function drawBoard(){
   for(let row of board){
     html += "<tr>"
     for(let num of row){
-      html += `<td id="row${rownum}col${colnum}">${num}</td>`;
+      html += `<td id="row${rownum}col${colnum}" data-row="${rownum}" data-col=${colnum}>${Object.keys(num)[0]}</td>`;
       colnum++;
     }
     colnum = 0;
@@ -38,5 +38,5 @@ function addEventListeners(){
 }
 
 function manageGameboardClick(element){
-  alert(element.id)
+  alert(element.dataset.row + " " +  element.dataset.col);
 }

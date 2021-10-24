@@ -83,7 +83,7 @@ def game(room):
   if hostedrooms != room:
     hosted = hostedrooms.split(" ")
   host = (room in hosted)
-  if rooms[room].host == u(session) and rooms[room].host_joined:
+  if rooms[room].host_joined:
     host = False
   if not host:
     gamehost = rooms[room].host
