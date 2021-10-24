@@ -1,5 +1,7 @@
 const socket = io();
-const gameboard = document.getElementById("gameboard")
+const gameboard = document.getElementById("gameboard");
+const players = document.getElementById("players");
+const chat = document.getElementById("chat");
 var board;
 
 socket.emit("joined", name, room);
@@ -8,6 +10,10 @@ socket.on("gameboard", data => {
   board = data;
   drawBoard();
   addEventListeners();
+});
+
+socket.on("new player", data => {
+  players.innerHTML += `<p id="player_${data.sid}">${decodeHTML(data.name)}</p>`;
 });
 
 function drawBoard(){
@@ -39,4 +45,10 @@ function addEventListeners(){
 
 function manageGameboardClick(element){
   alert(element.dataset.row + " " +  element.dataset.col);
+}
+
+function decodeHTML(text){
+  var div = document.createElement("div");
+  div.innerText = text;
+  return div.innerHTML;
 }

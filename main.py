@@ -109,6 +109,7 @@ def joined(name, room):
   print(rooms[room].__dict__)
   join_room(room)
   if not host:
+    emit("new player", {"name":name, "sid":request.sid}, room=room)
     emit("gameboard", player.board, room=request.sid)
 
 @socketio.on("disconnect")
