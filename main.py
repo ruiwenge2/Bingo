@@ -95,8 +95,9 @@ def url():
   quit()
 """
 
-@socketio.on("joined")
+@socketio.on("joined") # when someone joins
 def joined(name, room):
+  users.append[{request.sid:room}]
   rooms[room].involved.append({request.sid:name})
   host = True
   if name == rooms[room].host and not rooms[room].host_joined:
@@ -105,15 +106,21 @@ def joined(name, room):
     player = Player(name, request.sid, room)
     player.generate_board(rooms)
     rooms[room].players.append(player)
-    host = False  
+    host = False
   print(rooms[room].__dict__)
   join_room(room)
   if not host:
     emit("new player", {"name":name, "sid":request.sid}, room=room)
     emit("gameboard", player.board, room=request.sid)
 
-@socketio.on("disconnect")
+@socketio.on("generate")
+def generate(room):
+  number = rooms[room].generate_number()
+
+@socketio.on("disconnect") # when someone leaves
 def disconnect():
-  pass
+  sid = request.sid
+  room = users[sid]
+  
 
 socketio.run(app, host="0.0.0.0", port=8080)

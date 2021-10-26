@@ -52,3 +52,7 @@ function decodeHTML(text){
   div.innerText = text;
   return div.innerHTML;
 }
+
+function generateNumber(){
+  socket.emit("generate", room);
+}

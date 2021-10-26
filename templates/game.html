@@ -10,6 +10,7 @@
     <h1>Bingo</h1>
     {% if host %}
     <p>You are the host.</p>
+    <button onclick="generateNumber()">Generate Number</button>
     {% else %}
     <p>Host: {{gamehost}}</p>
     <div id="gameboard-wrapper">
