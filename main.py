@@ -1,4 +1,4 @@
-import os, random, time
+import os, random
 from flask import Flask, render_template, request, redirect, session
 from flask_socketio import SocketIO, emit, join_room, leave_room
 from functions import *
@@ -97,7 +97,7 @@ def url():
 
 @socketio.on("joined") # when someone joins
 def joined(name, room):
-  users.append[{request.sid:room}]
+  users[request.sid] = room
   rooms[room].involved.append({request.sid:name})
   host = True
   if name == rooms[room].host and not rooms[room].host_joined:
